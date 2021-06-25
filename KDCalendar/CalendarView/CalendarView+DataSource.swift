@@ -206,6 +206,10 @@ extension CalendarView: UICollectionViewDataSource {
             dayCell.isAdjacent = isAdjacent
             dayCell.isOutOfRange = cellOutOfRange(indexPath)
             
+            if let cellString = dataSource?.cellString(dateFromIndexPath(indexPath)!) {
+                dayCell.textLabel.text = cellString
+            }
+            
         } else {
             dayCell.isHidden = true
             dayCell.textLabel.text = ""
