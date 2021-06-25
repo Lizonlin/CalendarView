@@ -51,6 +51,7 @@ public protocol CalendarViewDataSource {
     func endDate() -> Date
     /* optional */
     func headerString(_ date: Date) -> String?
+	func cellString(_ date: Date) -> String?
 }
 
 extension CalendarViewDataSource {
@@ -65,6 +66,11 @@ extension CalendarViewDataSource {
     func headerString(_ date: Date) -> String? {
         return nil
     }
+	
+	func cellString(_ date: Date) -> String? {
+		return nil
+    }
+
 }
 
 public protocol CalendarViewDelegate {
@@ -204,6 +210,7 @@ public class CalendarView: UIView {
         self.collectionView.dataSource          = self
         self.collectionView.delegate            = self
         self.collectionView.isPagingEnabled     = true
+		self.collectionView.alwaysBounceHorizontal			= true
         self.collectionView.backgroundColor     = UIColor.clear
         self.collectionView.showsHorizontalScrollIndicator  = false
         self.collectionView.showsVerticalScrollIndicator    = false
